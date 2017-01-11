@@ -1,0 +1,40 @@
+/*PROJECT LIST*/
+ul.projects a {
+  text-decoration: none;
+}
+ul.projects li.project {
+  margin-top: 55px;
+}
+ul.projects li.project .project-wrapper {
+  position: relative;
+  text-align: center;
+}
+ul.projects li.project .project-wrapper .subhead {
+  position: absolute;
+  width: 100%;
+  top: -2rem;
+}
+ul.projects li.project .project-wrapper .thumb {
+  position: absolute;
+  visibility: hidden;
+  top: 50%;
+  text-align: center;
+  z-index: -1;
+  width: 500px;
+  height: auto;
+}
+ul.projects li.project .project-wrapper:hover {
+  cursor: pointer;
+}
+ul.projects li.project .project-wrapper:hover .outline {
+  color: black;
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+ul.projects li.project .project-wrapper:hover .roles {
+  color: #000;
+}
+ul.projects li.project .project-wrapper:hover .thumb {
+  visibility: visible;
+}

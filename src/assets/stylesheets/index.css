@@ -1,0 +1,81 @@
+/* @import must be at top of file, otherwise CSS will not work */
+
+@import url("//hello.myfonts.net/count/31c5b4");
+@font-face {
+    font-family: 'FrizQuadrataCom-Bold';
+    src: url('../fonts/31C5B4_0_0.eot');
+    src: url('../fonts/31C5B4_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/31C5B4_0_0.woff2') format('woff2'), url('../fonts/31C5B4_0_0.woff') format('woff'), url('../fonts/31C5B4_0_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'maison';
+    src: url('../fonts/maisonneuemono-webfont.woff2') format('woff2'), url('../fonts/maisonneuemono-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-family: 'FrizQuadrataCom-Bold', serif;
+}
+
+ul.corners>li {
+    font-family: 'FrizQuadrataCom-Bold', serif;
+}
+
+ul.corners>li a {
+    color: #000;
+}
+
+body, h2, h3, h4, h5, h6, p, span {
+    font-family: 'maison', sans-serif;
+    letter-spacing: 0;
+}
+
+nav .sub-menu li {
+    font-family: 'maison', sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+}
+
+p {
+    font-size: 12px;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: underline;
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+.outline {
+    text-transform: uppercase;
+    color: black;
+    -webkit-text-fill-color: transparent;
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 4.5rem;
+}
+
+h2.subhead {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+    background: #fff;
+    color: #000;
+}
+
+ul, ul ul {
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+}
