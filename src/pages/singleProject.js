@@ -10,13 +10,21 @@ class SingleProject extends React.Component {
 
         this.getProject = this.getProject.bind(this)
         this.createRowNodes = this.createRowNodes.bind(this)
+        this.scrollHandler = this.scrollHandler.bind(this)
 
         this.state = {
-            activeProject: false
+            activeProject: false,
+            scrollY: 0
         }
     }
     componentDidMount() {
         this.getProject()
+        window.addEventListener('scroll', this.scrollHandler)
+    }
+    scrollHandler(){
+      this.setState({
+        scrollY: window.scrollY
+      })
     }
     getProject() {
         let slug = this.props.params.projectSlug
@@ -39,9 +47,7 @@ class SingleProject extends React.Component {
     }
     createRowNodes(rows){
       rows.map(function(row, i) {
-          return (
-            row.fields && <ProjectRow rowData={row.fields} key={row.sys.id + '-' + i}/>
-          )
+          return <ProjectRow rowData={row.fields} key={row.sys.id + '-' + i}/>
       })
     }
     render() {
@@ -49,17 +55,20 @@ class SingleProject extends React.Component {
             return false
         }
         let fields = this.state.activeProject.fields
-        let rows = fields.assets
         let {roles, title, description, projectCredits} = fields
         roles = roles.join(' / ')
+
+        let rows = fields.assets
+        let rowNodes = this.createRowNodes(rows)
+        console.log(rowNodes)
+
+        let offsetTop = 80
         return (
-            <div className="single-project">
+            <div className="single-project" style={{padding: offsetTop + 'px 0'}}>
                 <div className="row expanded medium-collapse padded">
-                    <div className="small-12 medium-4 large-3 column">
+                    <div className="small-12 medium-4 large-3 column" ref="column">
                         <div className="content-wrapper">
-                            <div className="content" style={{
-                                width: window.innerWidth / 3 + 'px'
-                            }}>
+                            <div className="content" style={{paddingTop: this.state.scrollY + 'px'}}>
                                 <span className="roles">{roles}</span>
                                 <h1 className="title">{title}</h1>
                                 <div className="description">
@@ -72,7 +81,9 @@ class SingleProject extends React.Component {
                         </div>
                     </div>
                     <div className="small-12 medium-8 large-9 column end">
-                        <div className="images">{ this.createRowNodes(rows) }</div>
+                        <div className="images">
+                          { rowNodes }
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,13 @@
 /*SPP*/
 
-.single-project .content {
+/*.single-project .content {
   position: fixed;
   z-index: 9;
-}
-
+}*/
+/*
 .single-project {
   padding: 5rem 0;
-}
+}*/
 .single-project .column {
   min-height: 1px;
   position: relative;
