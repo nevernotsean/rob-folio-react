@@ -20,6 +20,9 @@ class SingleProject extends React.Component {
         this.getProject()
         window.addEventListener('scroll', this.scrollHandler)
     }
+    componentWillUnmount(){
+      window.removeEventListener('scroll', this.scrollHandler)
+    }
     scrollHandler(){
       this.setState({
         scrollY: window.scrollY
@@ -79,7 +82,7 @@ class SingleProject extends React.Component {
                                     <ReactMarkdown source={description}/>
                                 </div>
                                 <div className="credits">
-                                    <ReactMarkdown source={projectCredits}/>
+                                    {projectCredits && <ReactMarkdown source={projectCredits}/>}
                                 </div>
                             </div>
                         </div>

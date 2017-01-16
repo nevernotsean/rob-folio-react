@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Link} from 'react-router';
+import {Link} from 'react-router';
 // import classNames from 'classnames';
 import contentful from 'contentful';
 
@@ -29,7 +29,7 @@ class Layout extends React.Component {
                 <div className="header">
                     <nav>
                         <ul className="corners">
-                            <li className="menu-item home">Robin Major</li>
+                            <li className="menu-item home"><Link to="/">Robin Major</Link></li>
                             <li className="menu-item has-submenu">
                                 <a href="#">Brands</a>
                                 <ul className="sub-menu">

@@ -16,12 +16,12 @@ class ProjectList extends React.Component {
       this.createProjectListItem = this.createProjectListItem.bind(this)
     }
     componentDidMount(){
-      // window.addEventListener('resize', this.resizeHandler)
-      // window.addEventListener('scroll', this.scrollHandler)
+      window.addEventListener('resize', this.resizeHandler)
+      window.addEventListener('scroll', this.scrollHandler)
     }
     componentWillUnmount(){
-      // window.removeEventListener('resize', this.resizeHandler)
-      // window.removeEventListener('scroll', this.scrollHandler)
+      window.removeEventListener('resize', this.resizeHandler)
+      window.removeEventListener('scroll', this.scrollHandler)
     }
     resizeHandler(){
       this.setState({
