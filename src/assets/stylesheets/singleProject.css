@@ -70,6 +70,7 @@
 
 .content-wrapper {
   position: relative;
+  z-index: 9;
 }
 
 /*custom toggle play button for vimeo*/

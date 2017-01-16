@@ -5,22 +5,18 @@ import Vimeo from './projectRow/vimeo.js'
 
 class ProjectRow extends React.Component {
     render() {
-        let fields = this.props.rowData.fields
-
-        if ( !fields ) { return null }
+        let fields = this.props.rowData
 
         let { photo, mockupMobile, vimID } = fields
-        let imgURL = photo.fields.file.url
-        let mockupMobileURL = mockupMobile.fields.file.url
 
         let rowClasses = classNames({
-            oneAsset: !this.mockupMobile,
-            twoUp: this.mockupMobile
+            oneAsset: !mockupMobile,
+            twoUp: mockupMobile
         })
         return (
-            <div className={'row project--row ' + rowClasses}>
-                { photo && <Image fields={photo}/> }
-                { mockupMobile && <Image fields={fields} src={mockupMobile}/> }
+            <div className={'row project--row ' + rowClasses} >
+                { photo && <Image fields={fields} src={photo.fields}/> }
+                { mockupMobile && <Image fields={fields} src={mockupMobile.fields}/> }
                 { vimID && <Vimeo fields={fields} /> }
             </div>
         );

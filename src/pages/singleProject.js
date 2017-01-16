@@ -9,7 +9,6 @@ class SingleProject extends React.Component {
         super(props)
 
         this.getProject = this.getProject.bind(this)
-        this.createRowNodes = this.createRowNodes.bind(this)
         this.scrollHandler = this.scrollHandler.bind(this)
 
         this.state = {
@@ -26,16 +25,28 @@ class SingleProject extends React.Component {
         scrollY: window.scrollY
       })
     }
+    slugify = function(text){
+      return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+    }
     getProject() {
+      let self = this
         let slug = this.props.params.projectSlug
         let projects = this.props.projectData
         let activeProject = projects.filter(function(project) {
-            return project.fields.projectSlug === slug
+            let testSlug = project.fields.projectSlug
+            if (!testSlug) {
+              testSlug = self.slugify(project.fields.title)
+            }
+            return testSlug === slug
         })
 
         this.setState({activeProject: activeProject[0]})
     }
-
     createCredits(row, i) {
         return (
             <li key={'credit-' + i}>
@@ -44,11 +55,6 @@ class SingleProject extends React.Component {
                 </h6>
             </li>
         )
-    }
-    createRowNodes(rows){
-      rows.map(function(row, i) {
-          return <ProjectRow rowData={row.fields} key={row.sys.id + '-' + i}/>
-      })
     }
     render() {
         if (!this.state.activeProject) {
@@ -59,8 +65,6 @@ class SingleProject extends React.Component {
         roles = roles.join(' / ')
 
         let rows = fields.assets
-        let rowNodes = this.createRowNodes(rows)
-        console.log(rowNodes)
 
         let offsetTop = 80
         return (
@@ -82,7 +86,7 @@ class SingleProject extends React.Component {
                     </div>
                     <div className="small-12 medium-8 large-9 column end">
                         <div className="images">
-                          { rowNodes }
+                          { rows.map(function(row, i){ return <ProjectRow rowData={row.fields} key={row.sys.id + '-' + i} /> }) }
                         </div>
                     </div>
                 </div>

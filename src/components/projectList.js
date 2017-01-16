@@ -16,12 +16,12 @@ class ProjectList extends React.Component {
       this.createProjectListItem = this.createProjectListItem.bind(this)
     }
     componentDidMount(){
-      window.addEventListener('resize', this.resizeHandler)
-      window.addEventListener('scroll', this.scrollHandler)
+      // window.addEventListener('resize', this.resizeHandler)
+      // window.addEventListener('scroll', this.scrollHandler)
     }
     componentWillUnmount(){
-      window.removeEventListener('resize', this.resizeHandler)
-      window.removeEventListener('scroll', this.scrollHandler)
+      // window.removeEventListener('resize', this.resizeHandler)
+      // window.removeEventListener('scroll', this.scrollHandler)
     }
     resizeHandler(){
       this.setState({
@@ -29,7 +29,7 @@ class ProjectList extends React.Component {
       })
     }
     scrollHandler(){
-      let node = ReactDOM.findDOMNode(self)
+      let node = ReactDOM.findDOMNode(this)
       let trigger = ( node.clientHeight / 2 ) + 50
       let scrollY = window.scrollY
 
