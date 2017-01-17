@@ -31,7 +31,7 @@ class Layout extends React.Component {
                         <ul className="corners">
                             <li className="menu-item home"><Link to="/">Robin Major</Link></li>
                             <li className="menu-item has-submenu">
-                                <a href="#">Brands</a>
+                                <a>Brands</a>
                                 <ul className="sub-menu">
                                     <li>Google</li>
                                     <li>Supra Footwear</li>
@@ -62,7 +62,7 @@ class Layout extends React.Component {
                                     <li>Full Portfolio on request</li>
                                 </ul>
                                 <div className="wrapper">
-                                    <a href="" className="rotate">Contact</a>
+                                    <a className="rotate">Contact</a>
                                 </div>
                             </li>
                             <li className="menu-item has-submenu">
@@ -77,7 +77,7 @@ class Layout extends React.Component {
                                     <li>Soccer player</li>
                                     <li>(in that order)</li>
                                 </ul>
-                                <a href="" className="rotate">About</a>
+                                <a className="rotate">About</a>
                             </li>
                         </ul>
                     </nav>
