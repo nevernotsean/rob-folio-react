@@ -13,37 +13,37 @@ class SingleProject extends React.Component {
 
         this.state = {
             activeProject: false,
-            scrollY: 0
+            scrollY: window.innerHeight
         }
     }
     componentDidMount() {
+        this.scrollHandler()
         this.getProject()
         window.addEventListener('scroll', this.scrollHandler)
     }
-    componentWillUnmount(){
-      window.removeEventListener('scroll', this.scrollHandler)
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.scrollHandler)
     }
-    scrollHandler(){
-      this.setState({
-        scrollY: window.scrollY
-      })
+    scrollHandler() {
+        setTimeout(() => {
+            this.setState({scrollY: window.scrollY})
+        }, 500)
     }
-    slugify = function(text){
-      return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
+    slugify = function(text) {
+        return text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
+        .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+        .replace(/\-\-+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, ''); // Trim - from end of text
     }
     getProject() {
-      let self = this
+        let self = this
         let slug = this.props.params.projectSlug
         let projects = this.props.projectData
         let activeProject = projects.filter(function(project) {
             let testSlug = project.fields.projectSlug
             if (!testSlug) {
-              testSlug = self.slugify(project.fields.title)
+                testSlug = self.slugify(project.fields.title)
             }
             return testSlug === slug
         })
@@ -59,6 +59,9 @@ class SingleProject extends React.Component {
             </li>
         )
     }
+    lerp(v0, v1, t) {
+        return v0 * (1 - t) + v1 * t
+    }
     render() {
         if (!this.state.activeProject) {
             return false
@@ -69,13 +72,17 @@ class SingleProject extends React.Component {
 
         let rows = fields.assets
 
-        let offsetTop = 80
         return (
-            <div className="single-project" style={{padding: offsetTop + 'px 0'}}>
+            <div className="single-project" style={{
+                padding: '80px 0'
+            }}>
                 <div className="row expanded medium-collapse padded">
                     <div className="small-12 medium-4 large-3 column" ref="column">
                         <div className="content-wrapper">
-                            <div className="content" style={{paddingTop: this.state.scrollY + 'px'}}>
+                            <div className="content" style={{
+                                paddingTop: this.state.scrollY + 'px',
+                                transition: 'padding-top 2s ease'
+                            }}>
                                 <span className="roles">{roles}</span>
                                 <h1 className="title">{title}</h1>
                                 <div className="description">
@@ -89,7 +96,9 @@ class SingleProject extends React.Component {
                     </div>
                     <div className="small-12 medium-8 large-9 column end">
                         <div className="images">
-                          { rows.map(function(row, i){ return <ProjectRow rowData={row.fields} key={row.sys.id + '-' + i} /> }) }
+                            {rows.map(function(row, i) {
+                                return <ProjectRow rowData={row.fields} key={row.sys.id + '-' + i}/>
+                            })}
                         </div>
                     </div>
                 </div>
