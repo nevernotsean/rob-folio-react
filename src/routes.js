@@ -1,25 +1,27 @@
 import React from 'react'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // components
-import Layout from './components/layout.js'
+import Layout from './components/Layout'
 
 // pages
-import Home from './pages/home.js'
-import NotFound from './pages/notfound.js'
-import SingleProject from './pages/singleProject.js'
+import Home from './pages/Home'
+import NotFound from './pages/Notfound'
+import SingleProject from './pages/SingleProject'
 
-class Routes extends React.Component {
+const Routes = React.createClass({
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route path="/" component={Layout} onChange={this._handleChange}>
-          <IndexRoute component={Home} />
-          <Route path="/:projectSlug" component={SingleProject} />
-          <Route path="*" component={NotFound} />
-        </Route>
-      </Router>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/:projectSlug" component={SingleProject} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
     )
-  }
-}
+  },
+})
 export default Routes
