@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
-class ProjectNavigation extends React.Component {
+const ProjectNavigation = React.createClass({
   // TODO: match the pagination to the data model
   // getProjects(){
   //   let activeID = this.props.activeProject.id
@@ -22,7 +22,7 @@ class ProjectNavigation extends React.Component {
         </nav>
       </div>
     )
-  }
-}
-ProjectNavigation.propTypes = {}
+  },
+})
+
 export default ProjectNavigation

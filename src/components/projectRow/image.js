@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-class Image extends React.Component {
-  render() {
-    let src = this.props.src.file.url;
-    let applyDropShadow = this.props.fields.applyDropShadow;
-    return <img data-shadow={applyDropShadow} src={src} role="presentation" />;
-  }
+const Image = function(props) {
+  return (
+    <img
+      data-shadow={props.fields.applyDropShadow}
+      src={props.src.file.url}
+      role="presentation"
+    />
+  )
 }
-export default Image;
+export default Image
