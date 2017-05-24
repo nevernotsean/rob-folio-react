@@ -1,5 +1,5 @@
 import React from 'react'
-import contentful from 'contentful'
+import client from '../utils/contentfulClient.js'
 // import PropTypes from 'prop-types'
 
 import ProjectList from '../components/ProjectsList'
@@ -12,19 +12,17 @@ const Home = React.createClass({
     }
   },
   componentWillMount() {
-    const client = contentful.createClient({
-      accessToken: '751eb90638512801ed48bcb8c431c20874c2edd067426e3e19428720a0d2ae7f',
-      space: 'a72w7g4zs2xs',
-    })
-
+    this.getProjectList()
+  },
+  getProjectList() {
     client
-      .getEntries({ content_type: 'projectList', include: 2 })
+      .getEntries({ content_type: 'projectList', include: 1 })
       .then(response => {
         this.setState({
           projectData: response.items[0].fields.projectsReference,
           client: client,
         })
-        // console.log(response)
+        console.log(response)
       })
   },
   render() {

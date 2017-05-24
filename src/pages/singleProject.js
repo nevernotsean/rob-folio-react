@@ -1,6 +1,5 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import slugify from '../utils/slugify'
 
 import ProjectRow from '../components/singleProject/ProjectRow.js'
@@ -12,7 +11,7 @@ const SingleProject = React.createClass({
   propTypes: {},
   getInitialState() {
     return {
-      activeProject: false,
+      activeProjectData: {},
     }
   },
   componentDidMount() {
