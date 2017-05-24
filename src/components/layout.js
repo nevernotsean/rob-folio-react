@@ -1,4 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import client from '../utils/contentfulClient.js'
+import { connect } from 'react-redux'
+import { setProjectData } from '../utils/actionCreators'
 
 // components
 import Header from './Header'
@@ -7,12 +11,21 @@ import Header from './Header'
 import fuckMobile from '../assets/fuck_mobile.png'
 
 const Layout = React.createClass({
-  hideForLarge() {
-    if (window.innerWidth < 768) {
-      return 'block'
-    } else {
-      return 'none'
-    }
+  propTypes: {
+    projectData: PropTypes.array,
+    dispatch: PropTypes.func,
+  },
+  componentDidMount() {
+    this.getProjectData()
+  },
+  getProjectData() {
+    client
+      .getEntries({ content_type: 'projectList', include: 1 })
+      .then(response => {
+        this.props.dispatch(
+          setProjectData(response.items[0].fields.projectsReference)
+        )
+      })
   },
   render() {
     return (
@@ -21,15 +34,7 @@ const Layout = React.createClass({
         <div className="page row expanded">
           {this.props.children}
         </div>
-        <div
-          className="small-screen"
-          style={{
-            top: 0,
-            position: 'absolute',
-            zIndex: '9999',
-            display: this.hideForLarge(),
-          }}
-        >
+        <div className="small-screen">
           <a href="mailto:robin@robinmajor.us">
             <img
               role="presentation"
@@ -43,4 +48,10 @@ const Layout = React.createClass({
   },
 })
 
-export default Layout
+const mapStateToProps = state => {
+  return {
+    projectData: state.projectData,
+  }
+}
+
+export default connect(mapStateToProps)(Layout)

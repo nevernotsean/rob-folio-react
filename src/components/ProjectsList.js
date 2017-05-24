@@ -10,12 +10,6 @@ const ProjectList = React.createClass({
   propTypes: {
     projects: PropTypes.array,
   },
-  getInitialState() {
-    return {
-      winh: null,
-      listOffset: 0,
-    }
-  },
   componentDidMount() {
     window.addEventListener('resize', this.resizeHandler)
     window.addEventListener('scroll', this.scrollHandler)
@@ -23,11 +17,6 @@ const ProjectList = React.createClass({
   componentWillUnmount() {
     window.removeEventListener('resize', this.resizeHandler)
     window.removeEventListener('scroll', this.scrollHandler)
-  },
-  resizeHandler() {
-    this.setState({
-      winh: window.innerHeight,
-    })
   },
   scrollHandler() {
     const node = ReactDOM.findDOMNode(this)
@@ -38,17 +27,10 @@ const ProjectList = React.createClass({
       window.scrollTo(0, 0)
     }
   },
-  reorderList() {
-    const projects = this.props.projects,
-      firstArr = projects.slice(0, this.state.listOffset),
-      secondArr = projects.slice(this.state.listOffset, projects.length)
+  dupeList() {
+    const projects = this.props.projects
 
-    let reorderProjects
-
-    reorderProjects = secondArr.concat(firstArr)
-    reorderProjects = reorderProjects.concat(reorderProjects)
-
-    return reorderProjects
+    return projects
   },
   createProjectListItem(project, i) {
     const flipThumb = i % 2 === 0 ? '-100%' : '0'
@@ -60,14 +42,11 @@ const ProjectList = React.createClass({
       />
     )
   },
-  test(project) {
-    return <h1>{project.fields.title}</h1>
-  },
   render() {
     return (
       <div className="project-list">
         <ul className="projects menu vertical">
-          {this.props.projects.map(this.createProjectListItem)}
+          {this.dupeList().map(this.createProjectListItem)}
         </ul>
       </div>
     )

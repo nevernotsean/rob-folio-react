@@ -16,7 +16,7 @@
   "dependencies": {
     "bezier-easing": "^2.0.3",
     "classnames": "^2.2.5",
-    "contentful": "^4.2.0",
+    "contentful": "^4.3.0",
     "gsap": "^1.19.0",
     "marked": "^0.3.6",
     "normalizr": "^2.2.1",

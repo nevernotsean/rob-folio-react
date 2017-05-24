@@ -80,3 +80,16 @@ ul, ul ul {
 ul li {
     list-style: none;
 }
+
+.small-screen {
+  top: 0;
+  position: 'absolute';
+  z-index: '9999';
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .small-screen {
+    display: block;
+  }
+}

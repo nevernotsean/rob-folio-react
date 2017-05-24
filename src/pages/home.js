@@ -1,38 +1,26 @@
 import React from 'react'
-import client from '../utils/contentfulClient.js'
-// import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import ProjectList from '../components/ProjectsList'
 
 const Home = React.createClass({
-  getInitialState() {
-    return {
-      projectData: [],
-      client: {},
-    }
-  },
-  componentWillMount() {
-    this.getProjectList()
-  },
-  getProjectList() {
-    client
-      .getEntries({ content_type: 'projectList', include: 1 })
-      .then(response => {
-        this.setState({
-          projectData: response.items[0].fields.projectsReference,
-          client: client,
-        })
-        console.log(response)
-      })
+  propTypes: {
+    projectData: PropTypes.array,
+    dispatch: PropTypes.func,
   },
   render() {
     return (
       <div className="content">
-        {this.state.projectData &&
-          <ProjectList projects={this.state.projectData} />}
+        <ProjectList projects={this.props.projectData} />
       </div>
     )
   },
 })
+const mapStateToProps = state => {
+  return {
+    projectData: state.projectData,
+  }
+}
 
-export default Home
+export default connect(mapStateToProps)(Home)
