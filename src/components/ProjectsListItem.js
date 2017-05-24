@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import slugify from '../utils/slugify'
 
 const ProjectListItem = React.createClass({
   propTypes: {
@@ -9,22 +10,12 @@ const ProjectListItem = React.createClass({
     roles: PropTypes.array,
     title: PropTypes.string,
   },
-  slugify(text) {
-    return text
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-      .replace(/\-\-+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, '') // Trim - from end of text
-  },
   render() {
     const roles = this.props.roles.join(' / '),
       thumb = this.props.previewThumbnail,
       slug = !this.props.projectSlug
-        ? this.slugify(this.props.title)
-        : this.slugify(this.props.projectSlug),
+        ? slugify(this.props.title)
+        : slugify(this.props.projectSlug),
       style = {
         marginBottom: window.innerHeight / 6,
       }

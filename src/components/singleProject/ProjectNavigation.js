@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const ProjectNavigation = React.createClass({
   // TODO: match the pagination to the data model

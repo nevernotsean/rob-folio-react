@@ -1,7 +1,8 @@
+/* global React */
 import React from 'react'
 
 const Vimeo = function(props) {
-  const { vimLoop, vimAutoplay, vimID } = this.props.fields
+  const { vimLoop, vimAutoplay, vimID } = props.fields
   return (
     <div
       className="overlay"

@@ -17,12 +17,12 @@ const ProjectList = React.createClass({
     }
   },
   componentDidMount() {
-    // window.addEventListener('resize', this.resizeHandler)
-    // window.addEventListener('scroll', this.scrollHandler)
+    window.addEventListener('resize', this.resizeHandler)
+    window.addEventListener('scroll', this.scrollHandler)
   },
   componentWillUnmount() {
-    // window.removeEventListener('resize', this.resizeHandler)
-    // window.removeEventListener('scroll', this.scrollHandler)
+    window.removeEventListener('resize', this.resizeHandler)
+    window.removeEventListener('scroll', this.scrollHandler)
   },
   resizeHandler() {
     this.setState({

@@ -5,7 +5,7 @@
   z-index: 9;
 }*/
 .single-project {
-  padding: 4rem 0;
+  padding: 80px 0;
 }
 .single-project .column {
   min-height: 1px;
@@ -70,6 +70,10 @@
 .content-wrapper {
   position: relative;
   z-index: 9;
+}
+
+.content-wrapper .content {
+  transition: 'padding-top 0.8s ease',
 }
 
 /*custom toggle play button for vimeo*/
