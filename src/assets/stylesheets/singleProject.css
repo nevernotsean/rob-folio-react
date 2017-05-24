@@ -4,10 +4,9 @@
   position: fixed;
   z-index: 9;
 }*/
-/*
 .single-project {
-  padding: 5rem 0;
-}*/
+  padding: 4rem 0;
+}
 .single-project .column {
   min-height: 1px;
   position: relative;
@@ -65,7 +64,7 @@
   padding-left: 15px;
 }
 .single-project .padded {
-  padding: 0 60px;
+  padding: 0 40px;
 }
 
 .content-wrapper {

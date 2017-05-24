@@ -3,7 +3,7 @@ ul.projects a {
   text-decoration: none;
 }
 ul.projects li.project {
-  margin-top: 55px;
+  margin-top: 80px;
 }
 ul.projects li.project .project-wrapper {
   position: relative;
@@ -12,7 +12,8 @@ ul.projects li.project .project-wrapper {
 ul.projects li.project .project-wrapper .subhead {
   position: absolute;
   width: 100%;
-  top: -2rem;
+  top: -2.3rem;
+  height: 70px;
 }
 ul.projects li.project .project-wrapper .thumb {
   position: absolute;

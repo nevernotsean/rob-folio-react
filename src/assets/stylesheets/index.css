@@ -58,7 +58,8 @@ a:hover {
     /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
-    font-size: 4.5rem;
+    font-size: 5.5rem;
+    line-height: 1;
 }
 
 h2.subhead {
