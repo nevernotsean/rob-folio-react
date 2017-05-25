@@ -3,20 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "eslint": "3.6.1",
-    "eslint-config-standard": "6.1.0",
-    "eslint-config-standard-jsx": "3.1.0",
-    "eslint-config-standard-react": "4.1.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-promise": "2.0.1",
-    "eslint-plugin-react": "6.3.0",
-    "eslint-plugin-standard": "2.0.0",
-    "react-scripts": "0.7.0"
+    "react-scripts": "1.0"
   },
   "dependencies": {
     "bezier-easing": "^2.0.3",
     "classnames": "^2.2.5",
     "contentful": "^4.3.0",
+    "create-react-class": "^15.5.3",
     "gsap": "^1.19.0",
     "marked": "^0.3.6",
     "normalizr": "^2.2.1",
@@ -29,7 +22,8 @@
     "react-redux": "^4.4.6",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
