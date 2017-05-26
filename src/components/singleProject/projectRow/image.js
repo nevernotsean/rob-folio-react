@@ -6,7 +6,7 @@ const Image = function(props) {
     <img
       data-shadow={props.fields.applyDropShadow}
       src={props.src.file.url}
-      role="presentation"
+      alt={props.title}
     />
   )
 }

@@ -14,14 +14,12 @@ const SingleProject = React.createClass({
     activeProjectData: PropTypes.object,
     dispatch: PropTypes.func.isRequired,
   },
-  componentDidMount() {
-    setTimeout(() => {
-      console.log('componentDidMount', this.props)
-      getActiveProjectData(this.props.match.params.projectSlug)
-    }, 1000)
-  },
-  componentWillUpdate() {
-    // console.log('componentWillUpdate')
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.projectData !== this.props.projectData) {
+      this.props.dispatch(
+        getActiveProjectData(this.props.match.params.projectSlug)
+      )
+    }
   },
   render() {
     return (
@@ -41,11 +39,10 @@ const SingleProject = React.createClass({
   },
 })
 
-const mapStateToProps = state => {
-  // console.log('state.activeProjectData', state.activeProjectData)
+const mapStateToProps = (state, ownProps) => {
   return {
     projectData: state.projectData,
-    activeProjectData: state.activeProjectData.fields,
+    activeProjectData: state.activeProjectData,
   }
 }
 

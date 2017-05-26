@@ -4,11 +4,6 @@ import ReactMarkdown from 'react-markdown'
 
 var ProjectDetails = React.createClass({
   propTypes: {},
-  getInitialState() {
-    return {
-      scrollY: window.innerHeight,
-    }
-  },
   componentDidMount() {
     window.scrollTop = 0
   },
@@ -23,12 +18,9 @@ var ProjectDetails = React.createClass({
     )
   },
   render() {
-    const style = {
-      paddingTop: this.state.scrollY + 'px',
-    }
     return (
       <div className="content-wrapper">
-        <div className="content" style={style}>
+        <div className="content">
           <span className="roles">
             {this.props.roles && this.props.roles.join(' / ')}
           </span>

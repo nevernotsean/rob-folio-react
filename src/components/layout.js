@@ -16,7 +16,7 @@ const Layout = React.createClass({
   },
   getProjectData() {
     client
-      .getEntries({content_type: 'projectList', include: 1})
+      .getEntries({content_type: 'projectList', include: 2})
       .then(response => {
         this.props.dispatch(
           setProjectData(response.items[0].fields.projectsReference)

@@ -68,12 +68,17 @@
 }
 
 .content-wrapper {
-  position: relative;
+  position: fixed;
+  width: 33%;
+  width: calc(33vw - 50px);
   z-index: 9;
 }
 
-.content-wrapper .content {
-  transition: 'padding-top 0.8s ease',
+@media screen and (min-width: 1024px){
+  .content-wrapper {
+    width: 25%;
+    width: calc(25vw - 50px);
+  }
 }
 
 /*custom toggle play button for vimeo*/

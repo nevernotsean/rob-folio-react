@@ -6,12 +6,10 @@ const DEFAULT_STATE = {
 }
 
 const setProjectData = (state, action) => {
-  // console.log(action)
   return Object.assign({}, state, {projectData: action.projectData})
 }
 
 const setActiveProjectData = (state, action) => {
-  console.log(action)
   return Object.assign({}, state, {
     activeProjectData: action.activeProjectData,
   })

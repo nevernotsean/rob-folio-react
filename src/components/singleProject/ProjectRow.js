@@ -5,7 +5,7 @@ import Vimeo from './projectRow/vimeo'
 
 const ProjectRow = React.createClass({
   render() {
-    const { photo, mockupMobile, vimID } = this.props.rowData
+    const {photo, mockupMobile, vimID} = this.props.asset
 
     const rowClasses = classNames({
       oneAsset: !mockupMobile,
@@ -13,10 +13,10 @@ const ProjectRow = React.createClass({
     })
     return (
       <div className={'row project--row ' + rowClasses}>
-        {photo && <Image fields={this.props.rowData} src={photo.fields} />}
+        {photo && <Image fields={this.props.asset} src={photo.fields} />}
         {mockupMobile &&
-          <Image fields={this.props.rowData} src={mockupMobile.fields} />}
-        {vimID && <Vimeo fields={this.props.rowData} />}
+          <Image fields={this.props.asset} src={mockupMobile.fields} />}
+        {vimID && <Vimeo fields={this.props.asset} />}
       </div>
     )
   },
