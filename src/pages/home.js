@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {getProjectData} from '../utils/actionCreators'
@@ -9,15 +9,10 @@ import ProjectList from '../components/ProjectsList'
 
 import fuckMobile from '../assets/fuck_mobile.png'
 
-const Home = ReactCreateClass({
-  propTypes: {
-    projectData: PropTypes.array,
-    dispatch: PropTypes.func.isRequired,
-  },
-
+class Home extends React.Component {
   componentDidMount() {
     this.props.dispatch(getProjectData())
-  },
+  }
   render() {
     return (
       <div className="page row expanded">
@@ -36,8 +31,14 @@ const Home = ReactCreateClass({
         </div>
       </div>
     )
-  },
-})
+  }
+}
+
+Home.propTypes = {
+  projectData: PropTypes.array,
+  dispatch: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = state => {
   return {
     projectData: state.projectData,

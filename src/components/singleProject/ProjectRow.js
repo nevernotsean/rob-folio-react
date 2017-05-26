@@ -1,10 +1,10 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import classNames from 'classnames'
 import Image from './projectRow/image'
 import Vimeo from './projectRow/vimeo'
 
-const ProjectRow = ReactCreateClass({
+class ProjectRow extends React.Component {
   render() {
     const {photo, mockupMobile, vimID} = this.props.asset
 
@@ -20,6 +20,6 @@ const ProjectRow = ReactCreateClass({
         {vimID && <Vimeo fields={this.props.asset} />}
       </div>
     )
-  },
-})
+  }
+}
 export default ProjectRow

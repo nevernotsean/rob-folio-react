@@ -1,16 +1,10 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import slugify from '../utils/slugify'
 
-const ProjectListItem = ReactCreateClass({
-  propTypes: {
-    assets: PropTypes.array,
-    previewThumbnail: PropTypes.object,
-    roles: PropTypes.array,
-    title: PropTypes.string,
-  },
+class ProjectListItem extends React.Component {
   render() {
     const roles = this.props.roles.join(' / '),
       thumb = this.props.previewThumbnail,
@@ -38,7 +32,13 @@ const ProjectListItem = ReactCreateClass({
         </Link>
       </li>
     )
-  },
-})
+  }
+}
 
+ProjectListItem.propTypes = {
+  assets: PropTypes.array,
+  previewThumbnail: PropTypes.object,
+  roles: PropTypes.array,
+  title: PropTypes.string,
+}
 export default ProjectListItem

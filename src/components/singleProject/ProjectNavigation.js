@@ -1,8 +1,8 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import {Link} from 'react-router-dom'
 
-const ProjectNavigation = ReactCreateClass({
+class ProjectNavigation extends React.Component {
   render() {
     return (
       <nav>
@@ -24,7 +24,7 @@ const ProjectNavigation = ReactCreateClass({
         </ul>
       </nav>
     )
-  },
-})
+  }
+}
 
 export default ProjectNavigation

@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
@@ -13,12 +13,7 @@ import Project from '../components/singleProject/Project'
 import '../assets/stylesheets/singleProject.css'
 import fuckMobile from '../assets/fuck_mobile.png'
 
-const SingleProject = ReactCreateClass({
-  propTypes: {
-    projectData: PropTypes.array,
-    activeProjectData: PropTypes.object,
-    dispatch: PropTypes.func.isRequired,
-  },
+class SingleProject extends React.Component {
   componentDidMount() {
     document.getElementsByTagName('body')[0].scrollTop = 0
 
@@ -27,12 +22,12 @@ const SingleProject = ReactCreateClass({
     this.props.dispatch(
       getActiveProjectData(this.props.match.params.projectSlug)
     )
-  },
+  }
   componentDidUpdate() {
     this.props.dispatch(
       getActiveProjectData(this.props.match.params.projectSlug)
     )
-  },
+  }
   render() {
     return (
       <div className="page row expanded">
@@ -53,8 +48,14 @@ const SingleProject = ReactCreateClass({
         </div>
       </div>
     )
-  },
-})
+  }
+}
+
+SingleProject.propTypes = {
+  projectData: PropTypes.array,
+  activeProjectData: PropTypes.object,
+  dispatch: PropTypes.func.isRequired,
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {

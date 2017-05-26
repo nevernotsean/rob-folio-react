@@ -1,17 +1,12 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-var ProjectDetails = ReactCreateClass({
-  propTypes: {
-    roles: PropTypes.array,
-    title: PropTypes.string,
-    description: PropTypes.string,
-  },
+class ProjectDetails extends React.Component {
   componentDidMount() {
     window.scrollTop = 0
-  },
+  }
   createCredits(row, i) {
     return (
       <li key={'credit-' + i}>
@@ -21,7 +16,7 @@ var ProjectDetails = ReactCreateClass({
         </h6>
       </li>
     )
-  },
+  }
   render() {
     return (
       <div className="content-wrapper">
@@ -41,7 +36,13 @@ var ProjectDetails = ReactCreateClass({
         </div>
       </div>
     )
-  },
-})
+  }
+}
+
+ProjectDetails.propTypes = {
+  roles: PropTypes.array,
+  title: PropTypes.string,
+  description: PropTypes.string,
+}
 
 export default ProjectDetails

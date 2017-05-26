@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from './utils/store'
@@ -9,7 +8,7 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import SingleProject from './pages/SingleProject'
 
-const Routes = ReactCreateClass({
+class Routes extends React.Component {
   render() {
     return (
       <BrowserRouter>
@@ -22,6 +21,7 @@ const Routes = ReactCreateClass({
         </Provider>
       </BrowserRouter>
     )
-  },
-})
+  }
+}
+
 export default Routes

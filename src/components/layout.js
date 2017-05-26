@@ -1,19 +1,15 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getProjectData} from '../utils/actionCreators'
 
 import fuckMobile from '../assets/fuck_mobile.png'
 
-const Layout = ReactCreateClass({
-  propTypes: {
-    projectData: PropTypes.array,
-    dispatch: PropTypes.func,
-  },
+class Layout extends React.Component {
   componentDidMount() {
     this.props.dispatch(getProjectData())
-  },
+  }
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
       return React.cloneElement(child, {
@@ -36,8 +32,13 @@ const Layout = ReactCreateClass({
         </div>
       </div>
     )
-  },
-})
+  }
+}
+
+Layout.propTypes: {
+  projectData: PropTypes.array,
+  dispatch: PropTypes.func,
+}
 
 const mapStateToProps = state => {
   return {

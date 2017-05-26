@@ -1,15 +1,11 @@
 import React from 'react'
-import ReactCreateClass from 'create-react-class'
+
 import PropTypes from 'prop-types'
 
 import ProjectAssets from './ProjectAssets'
 import ProjectDetails from './ProjectDetails'
 
-const Project = ReactCreateClass({
-  propTypes: {
-    activeProjectData: PropTypes.array,
-    dispatch: PropTypes.func,
-  },
+class Project extends React.Component {
   render() {
     const {description, title, roles, projectCredits, assets} = this.props
     return (
@@ -27,6 +23,12 @@ const Project = ReactCreateClass({
         </div>
       </div>
     )
-  },
-})
+  }
+}
+
+Project.propTypes = {
+  activeProjectData: PropTypes.array,
+  dispatch: PropTypes.func,
+}
+
 export default Project
