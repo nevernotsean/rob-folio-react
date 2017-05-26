@@ -20,14 +20,18 @@ const SingleProject = ReactCreateClass({
     dispatch: PropTypes.func.isRequired,
   },
   componentDidMount() {
+    document.getElementsByTagName('body')[0].scrollTop = 0
+
     this.props.dispatch(getProjectData())
+
+    this.props.dispatch(
+      getActiveProjectData(this.props.match.params.projectSlug)
+    )
   },
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.projectData !== this.props.projectData) {
-      this.props.dispatch(
-        getActiveProjectData(this.props.match.params.projectSlug)
-      )
-    }
+  componentDidUpdate() {
+    this.props.dispatch(
+      getActiveProjectData(this.props.match.params.projectSlug)
+    )
   },
   render() {
     return (
