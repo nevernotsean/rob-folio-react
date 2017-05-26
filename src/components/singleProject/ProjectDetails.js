@@ -1,9 +1,14 @@
 import React from 'react'
+import ReactCreateClass from 'create-react-class'
 import ReactMarkdown from 'react-markdown'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-var ProjectDetails = React.createClass({
-  propTypes: {},
+var ProjectDetails = ReactCreateClass({
+  propTypes: {
+    roles: PropTypes.array,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  },
   componentDidMount() {
     window.scrollTop = 0
   },

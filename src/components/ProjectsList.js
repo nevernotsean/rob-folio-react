@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactCreateClass from 'create-react-class'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
@@ -6,7 +7,7 @@ import ProjectListItem from '../components/ProjectsListItem'
 
 import '../assets/stylesheets/projectList.css'
 
-const ProjectList = React.createClass({
+const ProjectList = ReactCreateClass({
   propTypes: {
     projects: PropTypes.array,
   },
@@ -27,16 +28,16 @@ const ProjectList = React.createClass({
       window.scrollTo(0, 0)
     }
   },
-  dupeList() {
+  duplicateList() {
     const projects = this.props.projects
-
-    return projects
+    let doubleProjects = projects.concat(projects)
+    return doubleProjects
   },
   createProjectListItem(project, i) {
     const flipThumb = i % 2 === 0 ? '-100%' : '0'
     return (
       <ProjectListItem
-        key={project.sys.id}
+        key={`${project.sys.id}-${i}`}
         flipThumb={flipThumb}
         {...project.fields}
       />
@@ -46,7 +47,7 @@ const ProjectList = React.createClass({
     return (
       <div className="project-list">
         <ul className="projects menu vertical">
-          {this.dupeList().map(this.createProjectListItem)}
+          {this.duplicateList().map(this.createProjectListItem)}
         </ul>
       </div>
     )

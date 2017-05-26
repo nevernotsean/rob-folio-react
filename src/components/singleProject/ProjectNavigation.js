@@ -1,7 +1,8 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import ReactCreateClass from 'create-react-class'
+import {Link} from 'react-router-dom'
 
-const ProjectNavigation = React.createClass({
+const ProjectNavigation = ReactCreateClass({
   // TODO: match the pagination to the data model
   // getProjects(){
   //   let activeID = this.props.activeProject.id
@@ -15,12 +16,20 @@ const ProjectNavigation = React.createClass({
 
   render() {
     return (
-      <div className="project-nav">
-        <nav>
-          <Link to={'/projects/'}>Previous</Link>
-          <Link to={'/projects/'}>Next</Link>
-        </nav>
-      </div>
+      <nav>
+        <ul className="corners">
+          <li className="menu-item home">
+            <Link to="/">Back</Link>
+          </li>
+          <li className="menu-item" />
+          <li className="menu-item">
+            <Link to={`/projects/${this.props.previousSlug}`}>Previous</Link>
+          </li>
+          <li className="menu-item">
+            <Link to={`/projects/${this.props.nextSlug}`}>Next</Link>
+          </li>
+        </ul>
+      </nav>
     )
   },
 })

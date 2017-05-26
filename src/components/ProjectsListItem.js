@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import ReactCreateClass from 'create-react-class'
+import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import slugify from '../utils/slugify'
 
-const ProjectListItem = React.createClass({
+const ProjectListItem = ReactCreateClass({
   propTypes: {
     assets: PropTypes.array,
     previewThumbnail: PropTypes.object,
@@ -21,7 +22,7 @@ const ProjectListItem = React.createClass({
       }
     return (
       <li className="project" style={style}>
-        <Link to={slug}>
+        <Link to={`/projects/${slug}`}>
           <div className="project-wrapper">
             <h1 className="outline">{this.props.title}</h1>
             <h2 className="subhead roles">{roles}</h2>

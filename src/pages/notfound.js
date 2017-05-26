@@ -1,6 +1,7 @@
 import React from 'react'
+import ReactCreateClass from 'create-react-class'
 
-const NotFound = React.createClass({
+const NotFound = ReactCreateClass({
   render() {
     return (
       <div className="content">

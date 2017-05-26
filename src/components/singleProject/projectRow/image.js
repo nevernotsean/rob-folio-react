@@ -1,4 +1,4 @@
-/* global React */
+/*global React*/
 import React from 'react'
 
 const Image = function(props) {

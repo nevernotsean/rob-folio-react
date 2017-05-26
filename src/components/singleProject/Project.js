@@ -1,10 +1,11 @@
 import React from 'react'
+import ReactCreateClass from 'create-react-class'
 import PropTypes from 'prop-types'
 
 import ProjectAssets from './ProjectAssets'
 import ProjectDetails from './ProjectDetails'
 
-const Project = React.createClass({
+const Project = ReactCreateClass({
   propTypes: {
     activeProjectData: PropTypes.array,
     dispatch: PropTypes.func,
