@@ -1,13 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import client from '../utils/contentfulClient.js'
-import { connect } from 'react-redux'
-import { setProjectData } from '../utils/actionCreators'
+import {connect} from 'react-redux'
+import {setProjectData} from '../utils/actionCreators'
 
-// components
-import Header from './Header'
-
-// assets
 import fuckMobile from '../assets/fuck_mobile.png'
 
 const Layout = React.createClass({
@@ -20,7 +16,7 @@ const Layout = React.createClass({
   },
   getProjectData() {
     client
-      .getEntries({ content_type: 'projectList', include: 1 })
+      .getEntries({content_type: 'projectList', include: 1})
       .then(response => {
         this.props.dispatch(
           setProjectData(response.items[0].fields.projectsReference)
@@ -30,7 +26,6 @@ const Layout = React.createClass({
   render() {
     return (
       <div className="site">
-        <Header />
         <div className="page row expanded">
           {this.props.children}
         </div>
@@ -38,7 +33,7 @@ const Layout = React.createClass({
           <a href="mailto:robin@robinmajor.us">
             <img
               role="presentation"
-              style={{ width: '100%', maxWidth: 'none' }}
+              style={{width: '100%', maxWidth: 'none'}}
               src={fuckMobile}
             />
           </a>

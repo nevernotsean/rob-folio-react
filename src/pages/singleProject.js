@@ -1,54 +1,51 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { setActiveProjectData } from '../utils/actionCreators'
-import slugify from '../utils/slugify'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {getActiveProjectData} from '../utils/actionCreators'
 
-import ProjectAssets from '../components/singleProject/ProjectAssets.js'
-import ProjectDetails from '../components/singleProject/ProjectDetails.js'
+import Project from '../components/singleProject/Project'
 
 import '../assets/stylesheets/singleProject.css'
 
 const SingleProject = React.createClass({
   propTypes: {
     projectData: PropTypes.array,
-    activeProjectData: PropTypes.array,
-    dispatch: PropTypes.func,
+    activeProjectData: PropTypes.object,
+    dispatch: PropTypes.func.isRequired,
   },
   componentDidMount() {
-    this.getActiveProjectData()
+    setTimeout(() => {
+      console.log('componentDidMount', this.props)
+      getActiveProjectData(this.props.match.params.projectSlug)
+    }, 1000)
   },
-  getActiveProjectData() {
-    const activeProject = this.props.projectData.filter(project => {
-      let testSlug = project.fields.projectSlug
-      testSlug = !testSlug ? slugify(project.fields.title) : testSlug
-      return testSlug === this.props.match.params.projectSlug
-    })
-    console.log(this.props)
-    this.props.dispatch(setActiveProjectData(activeProject))
+  componentWillUpdate() {
+    // console.log('componentWillUpdate')
   },
   render() {
-    if (!this.props.activeProjectData.fields) {
-      return null
-    }
     return (
       <div className="single-project">
-        <div className="row expanded medium-collapse padded">
-          <div className="small-12 medium-4 large-3 column" ref="column">
-            <ProjectDetails {...this.props.activeProjectData.fields} />
-          </div>
-          <div className="small-12 medium-8 large-9 column end" />
-          <ProjectAssets assets={this.props.activeProjectData.fields.assets} />
+        <div className="header">
+          <nav>
+            <ul className="corners">
+              <li className="menu-item home">
+                <Link to="/">Robin Major</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
+        <Project {...this.props.activeProjectData} />
       </div>
     )
   },
 })
 
 const mapStateToProps = state => {
+  // console.log('state.activeProjectData', state.activeProjectData)
   return {
     projectData: state.projectData,
-    activeProjectData: state.activeProjectData,
+    activeProjectData: state.activeProjectData.fields,
   }
 }
 

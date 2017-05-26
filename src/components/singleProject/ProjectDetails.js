@@ -11,16 +11,6 @@ var ProjectDetails = React.createClass({
   },
   componentDidMount() {
     window.scrollTop = 0
-    this.scrollHandler()
-    window.addEventListener('scroll', this.scrollHandler)
-  },
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.scrollHandler)
-  },
-  scrollHandler() {
-    setTimeout(() => {
-      this.setState({ scrollY: window.scrollY })
-    }, 500)
   },
   createCredits(row, i) {
     return (
@@ -40,11 +30,12 @@ var ProjectDetails = React.createClass({
       <div className="content-wrapper">
         <div className="content" style={style}>
           <span className="roles">
-            {this.props.roles.join(' / ')}
+            {this.props.roles && this.props.roles.join(' / ')}
           </span>
           <h1 className="title">{this.props.title}</h1>
           <div className="description">
-            <ReactMarkdown source={this.props.description} />
+            {this.props.description &&
+              <ReactMarkdown source={this.props.description} />}
           </div>
           <div className="credits">
             {this.props.projectCredits &&

@@ -1,16 +1,17 @@
-import { SET_PROJECT_DATA, SET_ACTIVE_PROJECT_DATA } from './actions'
+import {SET_PROJECT_DATA, SET_ACTIVE_PROJECT_DATA} from './actions'
 
 const DEFAULT_STATE = {
-  winh: null,
   projectData: [],
-  activeProjectData: [],
+  activeProjectData: {},
 }
 
 const setProjectData = (state, action) => {
-  return Object.assign({}, state, { projectData: action.projectData })
+  // console.log(action)
+  return Object.assign({}, state, {projectData: action.projectData})
 }
 
 const setActiveProjectData = (state, action) => {
+  console.log(action)
   return Object.assign({}, state, {
     activeProjectData: action.activeProjectData,
   })
